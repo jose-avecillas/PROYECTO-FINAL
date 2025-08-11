@@ -13,6 +13,9 @@ Macro-F1 83,45% 84,38%
 Consistencia excelente entre validación y prueba (diferencia < 0.5%) 
 F1 cercano al exactitud sugiere buen equilibrio entre precisión y recuperación 
 Resultados sobresalientes para un problema multiclase con 77 etiquetas
+### Experimentación
+Proceso de experimentación simple y fácil de comprender para comparar diferentes arquitecturas de redes neuronales, funciones de activación e hiperparámetros para la clasificación de intenciones bancarias basadas en texto y OCR, utilizando como baseline una regresión logística. 
+Guarda los resultados de rendimiento y las curvas de entrenamiento. Asegurarse de tener listos los datos vectorizados y codificados del OCR y dividirlos en conjuntos de entrenamiento y prueba.
 ### Plataformas utilizadas
 - Google Colab: ejecuta este notebook (GPU opcional para BERT)
 - Conjuntos de datos de Hugging Face y transformadores para NLU (Banking77 + BERT).
