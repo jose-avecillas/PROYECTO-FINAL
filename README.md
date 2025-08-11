@@ -30,6 +30,6 @@ Guarda los resultados de rendimiento y las curvas de entrenamiento. Asegurarse d
 - Preprocesamiento de imágenes más avanzado.
 - Posiblemente técnicas de OCR más sofisticadas o modelos de clasificación más complejos.
 ### Causas posibles:
-- Hardware insuficiente (¿estás usando GPU?)
+- Hardware insuficiente
 - Tamaño de lote muy pequeño
 - Código no optimizado
