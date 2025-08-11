@@ -32,3 +32,33 @@ Guarda los resultados de rendimiento y las curvas de entrenamiento. Asegurarse d
 ### Causas posibles:
 - Hardware insuficiente
 - Tamaño de lote muy pequeño
+
+
+## Decisiones de diseño y justificación
+
+**NLU híbrido (BERT + baseline + NN simple).**  
+- BERT como principal por su robustez semántica; baseline TF-IDF+LR como respaldo por velocidad y estabilidad; NN simple (embeddings básicos) para cumplir con el requerimiento de “red para clasificación multiclase”. Esto garantiza disponibilidad (fallback) y calidad (BERT).
+
+**Extracción de entidades ligera + spaCy opcional.**  
+- Reglas (IBAN, tarjetas, montos, fechas, email) cubren la mayoría de casos bancarios con coste cero de entrenamiento.
+- spaCy `en_core_web_sm` se usa como refuerzo si está disponible, sin volver obligatorio el modelo pesado.
+
+**Gestión de diálogo con Transformer + memoria corta.**  
+- DialoGPT-small permite respuestas naturales con latencia razonable; memoria de ~6 turnos evita desbordes y preserva contexto inmediato.
+
+**Pipeline multimodal (OCR).**  
+- `pytesseract` extrae texto de vouchers/capturas; luego se corren reglas de entidades sobre el texto OCR. Aporta cobertura de casos reales (comprobantes) sin costos de entrenar modelos de visión.
+
+**API FastAPI + Uvicorn + ngrok.**  
+- FastAPI por tipado, rendimiento y documentación automática `/docs`.
+- ngrok para exponer temporalmente en Colab o entornos de prueba sin infraestructura adicional.
+
+**Evaluación automática.**  
+- Modelos: accuracy y macro-F1 (útil ante desbalance de intents) + matriz de confusión y reporte por clase.
+- Satisfacción: endpoints `/feedback` y `/feedback_stats` para CSAT/NPS/helpful; base CSV simple que puede migrar a DB.
+
+**UI Gradio.**  
+- Pestañas separadas (intents, entidades, chat, OCR, satisfacción) para validar fin-a-fin con mínima fricción para negocio y QA.
+
+**Portabilidad.**  
+- Notebooks para prototipado; scripts (train/eval/app) para producción en Cloud Run/Railway sin cambios de lógica.
