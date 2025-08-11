@@ -5,10 +5,11 @@ Alto volumen de consultas repetitivas (~80%) y necesidad de atención 24/7.
 ### Solución:
 Chatbot inteligente con NLU (BERT + clasificación de intenciones + extracción de entidades), gestión de diálogo basada en Transformer con memoria, pipeline multimodal (texto + OCR de imágenes), API + interfaz web (Gradio) y sistema de evaluación.
 ### Conjuntos de datos: Banking77
-### Análisis Detallado de los Resultados, métricas principales:
+
+### Análisis Detallado de los Resultados
 Prueba de validación métrica
-Precisión 84,42% 84,58% 
-Macro-F1 83,45% 84,38%
+- Precisión 84,42% 84,58% 
+- Macro-F1 83,45% 84,38%
 ### Interpretación:
 Consistencia excelente entre validación y prueba (diferencia < 0.5%) 
 F1 cercano al exactitud sugiere buen equilibrio entre precisión y recuperación 
