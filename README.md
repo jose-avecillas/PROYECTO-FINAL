@@ -32,4 +32,3 @@ Guarda los resultados de rendimiento y las curvas de entrenamiento. Asegurarse d
 ### Causas posibles:
 - Hardware insuficiente
 - Tamaño de lote muy pequeño
-- Código no optimizado
